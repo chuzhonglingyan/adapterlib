@@ -3,6 +3,7 @@
     package="com.yuntian.adapterexample">
 
     <application
+        android:name=".base.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,6 +17,53 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".list.NestnestListActivity"
+            android:label="NestnestListActivity"
+            android:theme="@style/AppTheme"></activity>
+
+        <activity
+            android:name=".list.HeadFootListActivity"
+            android:label="HeadFootListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.MultiTypeListActivity"
+            android:label="MultiTypeListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.TestOperateListActivity"
+            android:label="MultiTypeListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.MultiTypeGoodListActivity"
+            android:label="MultiTypeGoodListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.TouchOperateListActivity"
+            android:label="TouchOperateListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.ItemAnimatorListActivity"
+            android:label="ItemAnimatorListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.SmartListActivity"
+            android:label="SmartListActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.LayoutManagerActivity"
+            android:label="LayoutManagerActivity"
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".list.NestnestDataListActivity"
+            android:label="LayoutManagerActivity"
+            android:theme="@style/AppTheme"></activity>
+
+        <activity
+            android:name=".list.GroupStickListActivity"
+            android:label="ViewPagerActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

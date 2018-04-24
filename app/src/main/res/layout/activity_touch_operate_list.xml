@@ -13,7 +13,9 @@
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
+
+            android:background="@android:color/white">
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
 </layout>

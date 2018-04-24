@@ -16,6 +16,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -28,4 +38,7 @@ dependencies {
     implementation project(':adapterlib')
 
     implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-3'
 }

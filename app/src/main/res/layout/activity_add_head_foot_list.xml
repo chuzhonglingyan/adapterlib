@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tv_add_head"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:text="追加头部"
+                android:gravity="center"
+                android:background="@android:color/holo_purple"
+                />
+            <TextView
+                android:id="@+id/tv_adds_head"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/white"
+                android:text="指定位置增加头部"
+                android:gravity="center"
+                android:background="@android:color/holo_purple"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white">
+
+            <TextView
+                android:id="@+id/tv_add_foot"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:textColor="@android:color/white"
+                android:text="追加尾部"
+                android:gravity="center"
+                android:background="@android:color/holo_purple"
+                />
+            <TextView
+                android:id="@+id/tv_adds_foot"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@android:color/white"
+                android:text="指定位置增加尾部"
+                android:gravity="center"
+                android:background="@android:color/holo_purple"
+                />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/white"></android.support.v7.widget.RecyclerView>
+
+
+
+
+    </LinearLayout>
+
+</layout>
