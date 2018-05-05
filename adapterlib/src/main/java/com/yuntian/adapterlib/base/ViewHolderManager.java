@@ -1,5 +1,6 @@
 package com.yuntian.adapterlib.base;
 
+import android.util.Log;
 import android.view.View;
 
 import java.lang.reflect.Constructor;
@@ -14,6 +15,8 @@ import java.util.Map;
 public class ViewHolderManager {
 
 
+    private static final String TAG = "ViewHolderManager";
+
     //维护一个ClassMode下所有自定义类型集合
     public static Map<Class<? extends TypeInterface>, Map<Integer, ModeViewHolder>> mapMap = new HashMap<>();
 
@@ -24,6 +27,13 @@ public class ViewHolderManager {
 
     public static Map<Class<? extends TypeInterface>, Map<Integer, ModeViewHolder>> getMapMap() {
         return mapMap;
+    }
+
+
+    public static void registerTypeClass(Class<? extends TypeInterface> typeClass, int vietype, Class<? extends BaseViewHolder> viewClassHodler) {
+        Map<Integer, ModeViewHolder> singleMap = new HashMap<>();
+        singleMap.put(0, new ModeViewHolder(vietype, viewClassHodler));
+        ViewHolderManager.registerTypeClass(typeClass, singleMap);
     }
 
 
@@ -41,6 +51,7 @@ public class ViewHolderManager {
 
         Class<? extends BaseViewHolder> viewHolderClass = getViewHolderClass(viewType);
         if (viewHolderClass == null) {
+            Log.e(TAG,"viewType="+viewType+",viewType对应的viewholder未注册");
             return null;
         }
         Constructor c = null;
@@ -61,7 +72,6 @@ public class ViewHolderManager {
     }
 
     public static Class<? extends BaseViewHolder> getViewHolderClass(int viewType) {
-
         Class<? extends BaseViewHolder> viewHolderClass = ModeViewHolder.getViewHolderClassByType().get(viewType);
         return viewHolderClass;
     }
