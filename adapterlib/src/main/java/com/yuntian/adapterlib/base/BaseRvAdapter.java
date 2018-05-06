@@ -301,6 +301,7 @@ public abstract class BaseRvAdapter<T extends TypeInterface> extends RecyclerVie
         }
     }
 
+
     public List<T> getAllData() {
         return totalData;
     }
