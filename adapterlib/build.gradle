@@ -17,7 +17,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
     }
 
@@ -45,7 +45,7 @@ publish {
     userOrg = 'yutianyulei'
     groupId = 'com.yuntian'
     artifactId = 'adapterlib'
-    publishVersion ='1.0.0'
+    publishVersion ='1.0.1'
     uploadName = 'android-recyclerview-adapterlib'
     desc = 'A library adapterlib For recyclerview of Android.'
     website = 'https://github.com/chuzhonglinyan/adapterlib'
