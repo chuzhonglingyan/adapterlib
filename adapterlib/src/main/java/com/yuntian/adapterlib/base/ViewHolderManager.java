@@ -12,7 +12,7 @@ import java.util.Map;
  * description  .
  * Created by ChuYingYan on 2018/4/6.
  */
-public class ViewHolderManager {
+public  class ViewHolderManager {
 
 
     private static final String TAG = "ViewHolderManager";

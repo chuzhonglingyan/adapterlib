@@ -297,8 +297,12 @@ public abstract class BaseRvAdapter<T extends TypeInterface> extends RecyclerVie
 
             int pos = headData.size();
             totalData.addAll(pos, list);
-            notifyItemRangeChanged(pos, list.size());
+            notifyDataSetChanged();
         }
+    }
+
+    public List<T> getAllData() {
+        return totalData;
     }
 
 
