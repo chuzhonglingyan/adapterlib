@@ -6,6 +6,8 @@ package com.yuntian.adapterlib.base;
  */
 public interface IViewHolder {
 
+    void onAttach(BaseRvAdapter baseRvAdapter);
+
     void onCreate();
 
     void onResume();

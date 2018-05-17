@@ -40,7 +40,7 @@ public class TypeUitl<K, V extends TypeInterfaceImp> {
                     e.printStackTrace();
                 }
             }
-            System.out.println("耗时间 微秒：" + (System.nanoTime() - startTime) / 1000);
+           // System.out.println("耗时间 微秒：" + (System.nanoTime() - startTime) / 1000);
             return typeInterfaces;
         }
         return null;

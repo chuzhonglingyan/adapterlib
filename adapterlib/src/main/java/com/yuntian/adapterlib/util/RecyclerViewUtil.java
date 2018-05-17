@@ -1,14 +1,13 @@
 package com.yuntian.adapterlib.util;
 
-import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 
-import com.yuntian.adapterlib.divider.DividerGridItemDecoration;
-import com.yuntian.adapterlib.divider.DividerItemDecoration;
+import com.yuntian.adapterlib.divider.GridDividerItemDecoration;
+import com.yuntian.adapterlib.divider.LinearDecoration;
 
 
 /**
@@ -20,14 +19,47 @@ public class RecyclerViewUtil {
         throw new RuntimeException("RecyclerViewHelper cannot be initialized!");
     }
 
+
     /**
      * 配置垂直列表RecyclerView
      *
      * @param view
      */
-    public static void initRecyclerViewV(Context context, RecyclerView view, RecyclerView.ItemDecoration dividerItemDecoration,
-                                         RecyclerView.Adapter adapter) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+    public static void initRecyclerViewV(RecyclerView view, RecyclerView.Adapter adapter) {
+        initRecyclerViewV(view,adapter,false);
+    }
+
+    /**
+     * 配置垂直列表RecyclerView
+     *
+     * @param view
+     */
+    public static void initRecyclerViewV(RecyclerView view, RecyclerView.Adapter adapter,boolean isDivider) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        view.setHasFixedSize(true);// setHasFixedSize()方法用来使RecyclerView保持固定的大小，该信息被用于自身的优化。
+        view.setLayoutManager(layoutManager);
+        view.setItemAnimator(new DefaultItemAnimator());
+
+        for (int i = 0; i < view.getItemDecorationCount(); i++) {
+            view.removeItemDecorationAt(i);
+        }
+        LinearDecoration dividerItemDecoration=new LinearDecoration(view.getContext(), LinearLayoutManager.VERTICAL);
+        if (isDivider) {
+            view.addItemDecoration(dividerItemDecoration);
+        }
+        view.setAdapter(adapter);
+    }
+
+
+
+    /**
+     * 配置垂直列表RecyclerView
+     *
+     * @param view
+     */
+    public static void initRecyclerViewV(RecyclerView view, RecyclerView.Adapter adapter, RecyclerView.ItemDecoration dividerItemDecoration) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         view.setHasFixedSize(true);// setHasFixedSize()方法用来使RecyclerView保持固定的大小，该信息被用于自身的优化。
         view.setLayoutManager(layoutManager);
@@ -41,63 +73,62 @@ public class RecyclerViewUtil {
         view.setAdapter(adapter);
     }
 
+    /**
+     * 配置垂直列表RecyclerView
+     *
+     * @param view
+     */
+    public static void initRecyclerViewH(RecyclerView view, RecyclerView.Adapter adapter) {
+        initRecyclerViewH(view,adapter,false);
+    }
 
     /**
      * 配置垂直列表RecyclerView
      *
      * @param view
      */
-    public static void initRecyclerViewV(Context context, RecyclerView view, boolean isDivided,
-                                         RecyclerView.Adapter adapter) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+    public static void initRecyclerViewH(RecyclerView view, RecyclerView.Adapter adapter,boolean isDivider) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         view.setHasFixedSize(true);// setHasFixedSize()方法用来使RecyclerView保持固定的大小，该信息被用于自身的优化。
         view.setLayoutManager(layoutManager);
-
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
+        view.setItemAnimator(new DefaultItemAnimator());
 
         for (int i = 0; i < view.getItemDecorationCount(); i++) {
             view.removeItemDecorationAt(i);
         }
-
-        view.setItemAnimator(new DefaultItemAnimator());
-        if (isDivided) {
+        LinearDecoration dividerItemDecoration=new LinearDecoration(view.getContext(),  LinearLayoutManager.HORIZONTAL);
+        if (isDivider) {
             view.addItemDecoration(dividerItemDecoration);
         }
         view.setAdapter(adapter);
     }
 
-    public static void initRecyclerViewV(Context context, RecyclerView view, RecyclerView.Adapter adapter) {
-        initRecyclerViewV(context, view, false, adapter);
-    }
 
 
     /**
-     * 配置水平列表RecyclerView
+     * 配置垂直列表RecyclerView
      *
      * @param view
      */
-    public static void initRecyclerViewH(Context context, RecyclerView view, boolean isDivided,
-                                         RecyclerView.Adapter adapter) {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+    public static void initRecyclerViewH(RecyclerView view, RecyclerView.Adapter adapter, RecyclerView.ItemDecoration dividerItemDecoration) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        view.setHasFixedSize(true);// setHasFixedSize()方法用来使RecyclerView保持固定的大小，该信息被用于自身的优化。
         view.setLayoutManager(layoutManager);
-        view.setItemAnimator(new DefaultItemAnimator());
-
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL);
-
         for (int i = 0; i < view.getItemDecorationCount(); i++) {
             view.removeItemDecorationAt(i);
         }
-
-        if (isDivided) {
+        view.setItemAnimator(new DefaultItemAnimator());
+        if (dividerItemDecoration!=null) {
             view.addItemDecoration(dividerItemDecoration);
         }
         view.setAdapter(adapter);
     }
 
-    public static void initRecyclerViewH(Context context, RecyclerView view, RecyclerView.Adapter adapter) {
-        initRecyclerViewH(context, view, false, adapter);
+
+    public static void initRecyclerViewG(RecyclerView view, RecyclerView.Adapter adapter, int column) {
+        initRecyclerViewG(view,  adapter, column,false);
     }
 
     /**
@@ -105,13 +136,12 @@ public class RecyclerViewUtil {
      *
      * @param view
      */
-    public static void initRecyclerViewG(Context context, RecyclerView view, boolean isDivided,
-                                         RecyclerView.Adapter adapter, int column) {
-        GridLayoutManager layoutManager = new GridLayoutManager(context, column, LinearLayoutManager.VERTICAL, false);
+    public static void initRecyclerViewG( RecyclerView view, RecyclerView.Adapter adapter, int column,boolean isDivided) {
+        GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), column, LinearLayoutManager.VERTICAL, false);
         view.setLayoutManager(layoutManager);
         view.setItemAnimator(new DefaultItemAnimator());
 
-        DividerGridItemDecoration dividerItemDecoration=new DividerGridItemDecoration(context);
+        GridDividerItemDecoration dividerItemDecoration=new GridDividerItemDecoration(view.getContext());
 
         for (int i = 0; i < view.getItemDecorationCount(); i++) {
             view.removeItemDecorationAt(i);
@@ -123,8 +153,55 @@ public class RecyclerViewUtil {
         view.setAdapter(adapter);
     }
 
-    public static void initRecyclerViewG(Context context, RecyclerView view, RecyclerView.Adapter adapter, int column) {
-        initRecyclerViewG(context, view, false, adapter, column);
+
+    /**
+     * 配置网格列表RecyclerView
+     *
+     * @param view
+     */
+    public static void initRecyclerViewG( RecyclerView view, RecyclerView.Adapter adapter, int column,RecyclerView.ItemDecoration dividerItemDecoration) {
+        GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), column, LinearLayoutManager.VERTICAL, false);
+        view.setLayoutManager(layoutManager);
+        view.setItemAnimator(new DefaultItemAnimator());
+
+        for (int i = 0; i < view.getItemDecorationCount(); i++) {
+            view.removeItemDecorationAt(i);
+        }
+
+        if (dividerItemDecoration!=null) {
+            view.addItemDecoration(dividerItemDecoration);
+        }
+        view.setAdapter(adapter);
+    }
+
+
+    public static void initRecyclerViewSV(RecyclerView view, RecyclerView.Adapter adapter, int column) {
+        initRecyclerViewSV(view, adapter, column,false);
+    }
+
+
+
+
+    /**
+     * 配置瀑布流列表RecyclerView
+     *
+     * @param view
+     */
+    public static void initRecyclerViewSV(RecyclerView view, RecyclerView.Adapter adapter, int column,boolean isDivided) {
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(column, StaggeredGridLayoutManager.VERTICAL);
+        view.setLayoutManager(layoutManager);
+        view.setItemAnimator(new DefaultItemAnimator());
+
+        LinearDecoration dividerItemDecoration=new LinearDecoration(view.getContext(), LinearLayoutManager.VERTICAL);
+
+        for (int i = 0; i < view.getItemDecorationCount(); i++) {
+            view.removeItemDecorationAt(i);
+        }
+
+        if (isDivided) {
+            view.addItemDecoration(dividerItemDecoration);
+        }
+        view.setAdapter(adapter);
     }
 
 
@@ -133,26 +210,18 @@ public class RecyclerViewUtil {
      *
      * @param view
      */
-    public static void initRecyclerViewSV(Context context, RecyclerView view, boolean isDivided,
-                                          RecyclerView.Adapter adapter, int column) {
+    public static void initRecyclerViewSV(RecyclerView view, RecyclerView.Adapter adapter, int column,RecyclerView.ItemDecoration dividerItemDecoration) {
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(column, StaggeredGridLayoutManager.VERTICAL);
         view.setLayoutManager(layoutManager);
         view.setItemAnimator(new DefaultItemAnimator());
 
-        DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
-
         for (int i = 0; i < view.getItemDecorationCount(); i++) {
             view.removeItemDecorationAt(i);
         }
-
-        if (isDivided) {
+        if (dividerItemDecoration!=null) {
             view.addItemDecoration(dividerItemDecoration);
         }
         view.setAdapter(adapter);
-    }
-
-    public static void initRecyclerViewSV(Context context, RecyclerView view, RecyclerView.Adapter adapter, int column) {
-        initRecyclerViewSV(context, view, false, adapter, column);
     }
 
 

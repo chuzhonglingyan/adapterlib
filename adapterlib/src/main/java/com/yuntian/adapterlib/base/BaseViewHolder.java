@@ -15,6 +15,8 @@ public abstract class BaseViewHolder<D> extends RecyclerView.ViewHolder implemen
     protected IView iView;
     protected Context context;
 
+    protected BaseRvAdapter baseRvAdapter;
+
 
     private SparseArray<View> viewSparseArray = new SparseArray<>();
 
@@ -51,6 +53,12 @@ public abstract class BaseViewHolder<D> extends RecyclerView.ViewHolder implemen
      * @param position
      */
     public abstract void onBindViewData(D item, int position);
+
+
+    @Override
+    public void onAttach(BaseRvAdapter baseRvAdapter) {
+        this.baseRvAdapter=baseRvAdapter;
+    }
 
 
     @Override

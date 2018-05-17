@@ -67,8 +67,10 @@ public abstract class BaseRvAdapter<T extends TypeInterface> extends RecyclerVie
             recyclerView = (RecyclerView) parent;
             mContext = parent.getContext();
             viewHolderExecuter=new ViewHolderExecuter(this);
+
         }
         BaseViewHolder viewHolder = getViewHolderByViewType(parent, viewType);
+        viewHolder.onAttach(this);
         Log.d(TAG, "onCreateViewHolder:tempPosition=" + tempPosition + ",viewType=" + viewType);
         return viewHolder;
     }

@@ -51,6 +51,23 @@ public class ViewHolderExecuter {
     }
 
 
+
+    public void executeViewHolderonAttach() {
+        List<BaseViewHolder> baseViewHolderList = getAllViewHolder();
+        for (BaseViewHolder baseViewHolder : baseViewHolderList) {
+            baseViewHolder.onAttach(baseRvAdapter);
+        }
+    }
+
+
+    public void executeViewHolderonStop() {
+        List<BaseViewHolder> baseViewHolderList = getAllViewHolder();
+        for (BaseViewHolder baseViewHolder : baseViewHolderList) {
+            baseViewHolder.onStop();
+        }
+    }
+
+
     public void executeViewHolderResume() {
         List<BaseViewHolder> baseViewHolderList = getAllViewHolder();
         for (BaseViewHolder baseViewHolder : baseViewHolderList) {
